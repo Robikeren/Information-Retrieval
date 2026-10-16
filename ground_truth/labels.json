@@ -1,0 +1,130 @@
+{
+  "klasifikasi citra tanaman menggunakan CNN deep learning": {
+    "relevant_doc_ids": [
+      60,
+      294,
+      115,
+      33,
+      266,
+      264,
+      449,
+      307,
+      317
+    ],
+    "num_relevant": 9
+  },
+  "analisis sentimen media sosial Indonesia": {
+    "relevant_doc_ids": [
+      336,
+      534,
+      118,
+      31,
+      576,
+      239,
+      349,
+      104,
+      228
+    ],
+    "num_relevant": 9
+  },
+  "sistem pakar diagnosa penyakit menggunakan forward chaining": {
+    "relevant_doc_ids": [
+      137,
+      225,
+      372,
+      204,
+      29
+    ],
+    "num_relevant": 5
+  },
+  "sistem pendukung keputusan dengan metode AHP": {
+    "relevant_doc_ids": [
+      480,
+      428,
+      414,
+      316,
+      95,
+      8
+    ],
+    "num_relevant": 6
+  },
+  "perancangan UI/UX aplikasi mobile": {
+    "relevant_doc_ids": [
+      379,
+      183,
+      64,
+      420,
+      231,
+      169,
+      217,
+      257,
+      506,
+      436
+    ],
+    "num_relevant": 10
+  },
+  "prediksi time series dengan LSTM": {
+    "relevant_doc_ids": [
+      310,
+      421,
+      141,
+      102,
+      384,
+      529
+    ],
+    "num_relevant": 6
+  },
+  "deteksi objek menggunakan YOLO": {
+    "relevant_doc_ids": [
+      246,
+      49,
+      446,
+      182,
+      19,
+      105,
+      305,
+      205,
+      517,
+      296
+    ],
+    "num_relevant": 10
+  },
+  "optimasi proses bisnis lean six sigma": {
+    "relevant_doc_ids": [
+      101,
+      5,
+      337,
+      215,
+      181,
+      444
+    ],
+    "num_relevant": 6
+  },
+  "sistem IoT monitoring berbasis sensor": {
+    "relevant_doc_ids": [
+      462,
+      125,
+      555,
+      455,
+      530,
+      450,
+      551
+    ],
+    "num_relevant": 7
+  },
+  "analisis pengenalan wajah face recognition": {
+    "relevant_doc_ids": [
+      188,
+      253,
+      40,
+      206,
+      138,
+      211,
+      106,
+      198,
+      143,
+      22
+    ],
+    "num_relevant": 10
+  }
+}

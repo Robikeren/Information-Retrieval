@@ -1,0 +1,41 @@
+metode,query,precision,recall,f1,ap
+cosine,klasifikasi citra tanaman menggunakan CNN deep learning,0.9,1.0,0.9473684210526316,0.8782627865961198
+cosine,analisis sentimen media sosial Indonesia,0.9,1.0,0.9473684210526316,1.0
+cosine,sistem pakar diagnosa penyakit menggunakan forward chaining,0.5,1.0,0.6666666666666666,1.0
+cosine,sistem pendukung keputusan dengan metode AHP,0.6,1.0,0.7499999999999999,0.8734126984126983
+cosine,perancangan UI/UX aplikasi mobile,1.0,1.0,1.0,1.0
+cosine,prediksi time series dengan LSTM,0.6,1.0,0.7499999999999999,0.7884920634920635
+cosine,deteksi objek menggunakan YOLO,1.0,1.0,1.0,1.0
+cosine,optimasi proses bisnis lean six sigma,0.6,1.0,0.7499999999999999,0.9484126984126983
+cosine,sistem IoT monitoring berbasis sensor,0.7,1.0,0.8235294117647058,0.9682539682539683
+cosine,analisis pengenalan wajah face recognition,1.0,1.0,1.0,1.0
+jaccard,klasifikasi citra tanaman menggunakan CNN deep learning,0.3,0.3333333333333333,0.3157894736842105,0.2685185185185185
+jaccard,analisis sentimen media sosial Indonesia,0.6,0.6666666666666666,0.631578947368421,0.6071428571428572
+jaccard,sistem pakar diagnosa penyakit menggunakan forward chaining,0.5,1.0,0.6666666666666666,0.9666666666666666
+jaccard,sistem pendukung keputusan dengan metode AHP,0.6,1.0,0.7499999999999999,0.8722222222222221
+jaccard,perancangan UI/UX aplikasi mobile,0.7,0.7,0.7,0.6557142857142857
+jaccard,prediksi time series dengan LSTM,0.3,0.5,0.37499999999999994,0.18253968253968253
+jaccard,deteksi objek menggunakan YOLO,0.7,0.7,0.7,0.6732142857142857
+jaccard,optimasi proses bisnis lean six sigma,0.6,1.0,0.7499999999999999,0.7999999999999999
+jaccard,sistem IoT monitoring berbasis sensor,0.5,0.7142857142857143,0.588235294117647,0.49472789115646254
+jaccard,analisis pengenalan wajah face recognition,0.7,0.7,0.7,0.6527777777777778
+dice,klasifikasi citra tanaman menggunakan CNN deep learning,0.3,0.3333333333333333,0.3157894736842105,0.2685185185185185
+dice,analisis sentimen media sosial Indonesia,0.6,0.6666666666666666,0.631578947368421,0.6071428571428572
+dice,sistem pakar diagnosa penyakit menggunakan forward chaining,0.5,1.0,0.6666666666666666,0.9666666666666666
+dice,sistem pendukung keputusan dengan metode AHP,0.6,1.0,0.7499999999999999,0.8722222222222221
+dice,perancangan UI/UX aplikasi mobile,0.7,0.7,0.7,0.6557142857142857
+dice,prediksi time series dengan LSTM,0.3,0.5,0.37499999999999994,0.18253968253968253
+dice,deteksi objek menggunakan YOLO,0.7,0.7,0.7,0.6732142857142857
+dice,optimasi proses bisnis lean six sigma,0.6,1.0,0.7499999999999999,0.7999999999999999
+dice,sistem IoT monitoring berbasis sensor,0.5,0.7142857142857143,0.588235294117647,0.49472789115646254
+dice,analisis pengenalan wajah face recognition,0.7,0.7,0.7,0.6527777777777778
+overlap,klasifikasi citra tanaman menggunakan CNN deep learning,0.4,0.4444444444444444,0.4210526315789474,0.34444444444444444
+overlap,analisis sentimen media sosial Indonesia,0.7,0.7777777777777778,0.7368421052631577,0.6009259259259259
+overlap,sistem pakar diagnosa penyakit menggunakan forward chaining,0.5,1.0,0.6666666666666666,1.0
+overlap,sistem pendukung keputusan dengan metode AHP,0.6,1.0,0.7499999999999999,0.9484126984126983
+overlap,perancangan UI/UX aplikasi mobile,0.7,0.7,0.7,0.5208333333333334
+overlap,prediksi time series dengan LSTM,0.5,0.8333333333333334,0.625,0.8055555555555555
+overlap,deteksi objek menggunakan YOLO,0.8,0.8,0.8000000000000002,0.7675
+overlap,optimasi proses bisnis lean six sigma,0.6,1.0,0.7499999999999999,0.9150793650793649
+overlap,sistem IoT monitoring berbasis sensor,0.6,0.8571428571428571,0.7058823529411764,0.6916666666666667
+overlap,analisis pengenalan wajah face recognition,0.8,0.8,0.8000000000000002,0.7327777777777778
