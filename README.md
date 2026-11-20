@@ -28,42 +28,6 @@ Project ini merupakan implementasi UTS mata kuliah Information Retrieval.
 | Frontend | HTML, Tailwind CSS (CDN), Chart.js (CDN) |
 | Data | CSV |
 
----
-
-## Struktur Project
-ir-skripsi/
-├── data/
-│ └── dataset_skripsi_fasilkom_clean.csv
-├── backend/
-│ ├── preprocessing.py # Pipeline NLP Bahasa Indonesia
-│ ├── similarity.py # 4 metode similarity
-│ ├── evaluator.py # Metrik evaluasi (P/R/F1/MAP)
-│ ├── service.py # Business logic (load artifacts, search)
-│ └── main.py # FastAPI app
-├── frontend/
-│ └── index.html # UI web
-├── ground_truth/
-│ ├── label_helper.py # Script labeling interaktif
-│ └── labels.json # Ground truth hasil labeling
-├── artifacts/ # Cache & model (auto-generated)
-│ ├── vectorizer.pkl
-│ ├── tfidf_matrix.pkl
-│ ├── processed_docs.pkl
-│ ├── processed_texts.pkl
-│ └── processed_dataset.csv
-├── results/ # Hasil evaluasi (auto-generated)
-│ ├── evaluation_summary.csv
-│ ├── per_query_results.csv
-│ └── comparison_chart.png
-├── build_index.py # Build TF-IDF matrix
-├── evaluate.py # Script evaluasi 4 metode
-├── requirements.txt
-└── README.md
-
-text
-
----
-
 ## Instalasi
 
 ### 1. Clone / siapkan project
