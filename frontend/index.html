@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIPINTAR - Pencarian Skripsi Fasilkom UNEJ</title>
+  <title>SIPINTAR - Pencarian & Deteksi Kemiripan Skripsi</title>
   <link rel="icon" type="image/png" href="/logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -16,6 +16,8 @@
       background-position: center;
       background-repeat: no-repeat;
     }
+    /* Gaya untuk Tab */
+    .tab-active { border-bottom: 3px solid #2563eb; color: #1e40af; font-weight: 600; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -27,14 +29,30 @@
         <img src="/logo.png" alt="Logo" class="h-12 sm:h-16 w-auto object-contain shrink-0" onerror="this.style.display='none'" />
         <div class="text-center sm:text-left">
           <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">SIPINTAR</h1>
-          <p class="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">Sistem Pencarian Judul Skripsi/Tugas Akhir Fasilkom UNEJ</p>
+          <p class="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">Sistem Deteksi Kemiripan & Pencarian Judul Skripsi Fasilkom UNEJ</p>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- TABS NAVIGASI -->
+  <div class="bg-white border-b sticky top-0 z-10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-center sm:justify-start gap-8">
+      <button id="tab-search" class="tab-btn tab-active py-3 px-1 text-sm sm:text-base text-slate-600 transition" onclick="switchTab('search')">
+        Pencarian Umum
+      </button>
+      <button id="tab-deteksi" class="tab-btn py-3 px-1 text-sm sm:text-base text-slate-600 transition" onclick="switchTab('deteksi')">
+        Cek Kemiripan Judul
+      </button>
+    </div>
+  </div>
+
   <!-- MAIN -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 w-full">
+    
+    <!-- ========================================== -->
+    <!-- SECTION 1: PENCARIAN UMUM                  -->
+    <!-- ========================================== -->
     <section id="section-search">
       
       <!-- HERO SECTION -->
@@ -71,13 +89,77 @@
       <div id="search-status" class="mb-3 text-xs sm:text-sm text-slate-600 px-1"></div>
       <div id="search-results" class="space-y-3 sm:space-y-4"></div>
     </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: CEK KEMIRIPAN JUDUL             -->
+    <!-- ========================================== -->
+    <section id="section-deteksi" class="hidden">
+      
+      <!-- HERO SECTION DETEKSI -->
+      <div class="hero-bg rounded-2xl overflow-hidden shadow-lg mb-6 relative">
+        <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px]"></div>
+        <div class="relative z-10 px-4 py-10 sm:px-8 sm:py-16 flex flex-col items-center justify-center min-h-[250px]">
+          <h2 class="text-white text-lg sm:text-2xl font-bold mb-2 drop-shadow-md text-center">
+            Deteksi Kemiripan Judul Skripsi
+          </h2>
+          <p class="text-white/80 text-xs sm:text-sm mb-6 text-center max-w-2xl">
+            Masukkan usulan judul skripsi barumu. Sistem akan membandingkannya dengan seluruh database untuk mendeteksi potensi tumpang tindih topik.
+          </p>
+          
+          <div class="w-full max-w-3xl bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-2 sm:p-3 flex flex-col sm:flex-row gap-2 border border-white/20">
+            <input
+              id="judul-input"
+              type="text"
+              placeholder="contoh: Sistem Informasi Geografis Pemetaan Wisata Berbasis Web"
+              class="flex-1 border-none bg-transparent px-4 py-2 text-sm sm:text-base focus:outline-none focus:ring-0 text-slate-800"
+              onkeydown="if(event.key==='Enter') doDeteksi()"
+            />
+            <button
+              onclick="doDeteksi()"
+              class="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white px-6 py-2 rounded-lg font-medium text-sm sm:text-base transition shadow-md whitespace-nowrap"
+            >
+              Cek Kemiripan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status & Hasil Deteksi -->
+      <div id="deteksi-status" class="mb-3 text-xs sm:text-sm text-slate-600 px-1"></div>
+      <div id="deteksi-results" class="space-y-3 sm:space-y-4"></div>
+    </section>
+
   </main>
 
   <footer class="max-w-7xl mx-auto px-4 sm:px-6 py-6 text-center text-[10px] sm:text-xs text-slate-400">
-    2026 — SIPINTAR · Sistem Pencarian Tugas Akhir
+    2026 — SIPINTAR · Sistem Deteksi Kemiripan & Pencarian Tugas Akhir
   </footer>
 
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT LOGIC                           -->
+  <!-- ========================================== -->
   <script>
+    // ============================================
+    // 1. TAB SWITCHING
+    // ============================================
+    function switchTab(tab) {
+      // Hapus kelas aktif dari semua tab
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
+      // Tambahkan kelas aktif ke tab yang dipilih
+      document.getElementById('tab-' + tab).classList.add('tab-active');
+
+      // Sembunyikan semua section dulu
+      document.getElementById('section-search').classList.add('hidden');
+      document.getElementById('section-deteksi').classList.add('hidden');
+
+      // Munculkan section yang dipilih
+      if (tab === 'search') document.getElementById('section-search').classList.remove('hidden');
+      if (tab === 'deteksi') document.getElementById('section-deteksi').classList.remove('hidden');
+    }
+
+    // ============================================
+    // 2. FITUR PENCARIAN UMUM
+    // ============================================
     async function loadRandomDocs() {
       const statusEl = document.getElementById('search-status');
       const resultsEl = document.getElementById('search-results');
@@ -119,12 +201,80 @@
       }
     }
 
+    // ============================================
+    // 3. FITUR CEK KEMIRIPAN
+    // ============================================
+    async function doDeteksi() {
+      const judul = document.getElementById('judul-input').value.trim();
+      if (!judul) return alert('Masukkan judul terlebih dahulu!');
+
+      const statusEl = document.getElementById('deteksi-status');
+      const resultsEl = document.getElementById('deteksi-results');
+
+      statusEl.innerHTML = `Menganalisis kemiripan judul...`;
+      resultsEl.innerHTML = '';
+
+      try {
+        // Memanfaatkan API search yang sudah ada, ambil Top 3 saja
+        const res = await fetch('/api/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: judul, top_k: 3 }),
+        });
+        if (!res.ok) throw new Error(await res.text());
+        const data = await res.json();
+
+        if (data.results.length === 0) {
+            statusEl.innerHTML = `Tidak ada judul yang mirip ditemukan.`;
+            return;
+        }
+
+        // Ambil hasil teratas sebagai skor kemiripan tertinggi
+        const topResult = data.results[0];
+        const persentase = (topResult.score * 100).toFixed(2);
+        
+        // Tentukan warna dan pesan peringatan
+        let warnaClass = "text-green-700 bg-green-50 border-green-200";
+        let pesan = "Aman, judul ini tergolong unik dan belum banyak kemiripan.";
+        
+        if (persentase > 80) {
+            warnaClass = "text-red-700 bg-red-50 border-red-200";
+            pesan = "PERINGATAN! Judul ini SANGAT MIRIP dengan skripsi yang sudah ada di database.";
+        } else if (persentase > 50) {
+            warnaClass = "text-amber-700 bg-amber-50 border-amber-200";
+            pesan = "Hati-hati, ada beberapa kemiripan topik. Disarankan untuk merevisi judul agar lebih orisinal.";
+        }
+
+        statusEl.innerHTML = `Analisis selesai.`;
+        
+        // Tampilkan kotak hasil kemiripan
+        resultsEl.innerHTML = `
+          <div class="border-2 rounded-xl p-6 mb-6 text-center shadow-sm ${warnaClass}">
+            <h3 class="text-sm font-semibold mb-2 opacity-80 uppercase tracking-wide">Tingkat Kemiripan Tertinggi</h3>
+            <div class="text-6xl font-extrabold mb-3">${persentase}%</div>
+            <p class="text-sm font-medium">${pesan}</p>
+            <p class="text-[10px] opacity-70 mt-4 max-w-xl mx-auto leading-relaxed">
+              *Catatan: Persentase ini dihitung berdasarkan skor Cosine Similarity leksikal (kecocokan kata dasar), bukan persentase plagiarisme.
+            </p>
+          </div>
+          
+          <h4 class="font-bold text-slate-700 mb-3 px-1 text-lg">Skripsi Eksisting yang Paling Mendekati:</h4>
+          ${data.results.map(r => renderResult(r, true)).join('')}
+        `;
+
+      } catch (e) {
+        statusEl.innerHTML = `<span class="text-red-600">Error: ${escapeHtml(e.message)}</span>`;
+      }
+    }
+
+    // ============================================
+    // 4. HELPER FUNCTIONS (Render & Escape)
+    // ============================================
     function renderResult(r, showScores) {
-      // Badge Score Cosine (Hanya muncul jika bukan random doc)
       const scoreBadge = showScores ? `
         <div class="text-right shrink-0">
           <div class="text-xl sm:text-2xl font-bold text-blue-600">${r.score.toFixed(4)}</div>
-          <div class="text-[9px] sm:text-[10px] text-slate-400">Cosine Similarity</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-400">Cosine Score</div>
         </div>
       ` : '';
 
@@ -151,6 +301,7 @@
       return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
     }
 
+    // Load data acak saat web pertama kali dibuka
     document.addEventListener('DOMContentLoaded', loadRandomDocs);
   </script>
 </body>
